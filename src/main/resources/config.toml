@@ -1,0 +1,10 @@
+# Configuration file for Dirt-Chat
+
+[general]
+debug = true
+coloredDebug = true
+sendTitleOnPing = true
+
+[sound]
+playPingSound = true
+pingSound = "block.note_block.pling"

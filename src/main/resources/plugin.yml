@@ -1,0 +1,70 @@
+name: DirtChat
+version: '${version}'
+main: net.dirtcraft.plugins.dirtchat.DirtChat
+api-version: 1.16
+depend: [ Vault ]
+authors: [ DeJustinHD ]
+description: Chat Handler for DirtCraft 1.16+ Servers
+commands:
+    staff:
+        description: Joins the staff chat channel.
+    global:
+        description: Joins the global chat channel.
+
+permissions:
+    dirtchat.read.global:
+        description: Allows the player to read the global chat.
+    dirtchat.read.staff:
+        description: Allows the player to read the staff chat.
+    dirtchat.write.global:
+        description: Allows the player to write to the global chat.
+    dirtchat.write.staff:
+        description: Allows the player to write to the staff chat.
+    dirtchat.ping:
+        description: Players with this permission ping others when they type their full name.
+    dirtchat.ping.bypass:
+        description: Players with this permission bypass the ping.
+    dirtchat.highlight:
+        description: Players with this permission can highlight items in chat.
+    dirtchat.staff:
+        description: Players with this permission are recognised as staff in chat.
+    dirtchat.color:
+        description: Players with this permission can use color codes in chat.
+    dirtchat.player:
+        description: Collection of commands for normal players.
+        children:
+            dirtchat.read.global: true
+            dirtchat.write.global: true
+            dirtchat.highlight: true
+    dirtchat.helper:
+        description: Collection of commands for helpers.
+        children:
+            dirtchat.read.global: true
+            dirtchat.write.global: true
+            dirtchat.read.staff: true
+            dirtchat.write.staff: true
+            dirtchat.highlight: true
+            dirtchat.staff: true
+            dirtchat.color: true
+    dirtchat.mod:
+        description: Collection of commands for moderators.
+        children:
+            dirtchat.read.global: true
+            dirtchat.write.global: true
+            dirtchat.read.staff: true
+            dirtchat.write.staff: true
+            dirtchat.highlight: true
+            dirtchat.staff: true
+            dirtchat.color: true
+    dirtchat.admin:
+        description: Collection of commands for administrators.
+        children:
+            dirtchat.read.global: true
+            dirtchat.write.global: true
+            dirtchat.read.staff: true
+            dirtchat.write.staff: true
+            dirtchat.highlight: true
+            dirtchat.staff: true
+            dirtchat.ping: true
+            dirtchat.ping.bypass: true
+            dirtchat.color: true
