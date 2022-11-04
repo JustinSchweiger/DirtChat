@@ -10,4 +10,5 @@ public class Permissions {
 	public static final String HIGHLIGHT_ITEM = "dirtchat.highlight";
 	public static final String COLOR_CHAT = "dirtchat.color";
 	public static final String IS_STAFF = "dirtchat.staff";
+	public static final String POST_LINK = "dirtchat.link";
 }

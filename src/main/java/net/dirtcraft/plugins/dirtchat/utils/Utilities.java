@@ -8,7 +8,6 @@ import net.dirtcraft.plugins.dirtchat.config.Config;
 import net.dirtcraft.plugins.dirtchat.listeners.ChatListener;
 import net.dirtcraft.plugins.dirtchat.listeners.PlayerListener;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.File;

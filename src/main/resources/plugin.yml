@@ -30,12 +30,15 @@ permissions:
         description: Players with this permission are recognised as staff in chat.
     dirtchat.color:
         description: Players with this permission can use color codes in chat.
+    dirtchat.link:
+        description: Players with this permission can post clickable links in chat.
     dirtchat.player:
         description: Collection of commands for normal players.
         children:
             dirtchat.read.global: true
             dirtchat.write.global: true
             dirtchat.highlight: true
+            dirtchat.link: true
     dirtchat.helper:
         description: Collection of commands for helpers.
         children:
@@ -46,6 +49,7 @@ permissions:
             dirtchat.highlight: true
             dirtchat.staff: true
             dirtchat.color: true
+            dirtchat.link: true
     dirtchat.mod:
         description: Collection of commands for moderators.
         children:
@@ -56,6 +60,7 @@ permissions:
             dirtchat.highlight: true
             dirtchat.staff: true
             dirtchat.color: true
+            dirtchat.link: true
     dirtchat.admin:
         description: Collection of commands for administrators.
         children:
@@ -68,3 +73,4 @@ permissions:
             dirtchat.ping: true
             dirtchat.ping.bypass: true
             dirtchat.color: true
+            dirtchat.link: true

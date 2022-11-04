@@ -49,8 +49,6 @@ public class ChatListener implements Listener {
 			event.setCancelled(true);
 		}
 
-		ComponentBuilder chatComponent = ChatManager.getChatComponent(player, message);
-		ComponentBuilder staffComponent = ChatManager.getStaffComponent(player, message);
 		Set<String> playerNamesToPing = new HashSet<>();
 
 		if (player.hasPermission(Permissions.PING)) {
@@ -62,12 +60,14 @@ public class ChatListener implements Listener {
 		}
 
 		if (isInStaffChat) {
-			chatStaff(recipients, staffComponent);
+			ComponentBuilder chatComponent = ChatManager.getChatComponent(player, message, true);
+			chatStaff(recipients, chatComponent);
 
 			CommandSender console = Bukkit.getConsoleSender();
-			console.spigot().sendMessage(staffComponent.create());
+			console.spigot().sendMessage(chatComponent.create());
 		} else {
-			chatGlobal(recipients, chatComponent, playerNamesToPing, player.getName());
+			ComponentBuilder chatComponent = ChatManager.getChatComponent(player, message, false);
+			chatGlobal(recipients, ChatManager.getChatComponent(player, message, false), playerNamesToPing, player.getName());
 
 			CommandSender console = Bukkit.getConsoleSender();
 			console.spigot().sendMessage(chatComponent.create());
