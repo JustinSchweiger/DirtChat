@@ -4,12 +4,12 @@ import net.dirtcraft.plugins.dirtchat.DirtChat;
 import net.dirtcraft.plugins.dirtchat.data.ChatManager;
 import net.dirtcraft.plugins.dirtchat.utils.Permissions;
 import net.dirtcraft.plugins.dirtchat.utils.Utilities;
-import net.dirtcraft.plugins.dirtchat.utils.Vault;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -43,8 +43,10 @@ public class ChatListener implements Listener {
 
 		if (isInStaffChat) {
 			event.setCancelled(true);
-		} else {
-			event.setFormat(Utilities.format(Vault.getChat().getPlayerPrefix(player)) + " " + player.getDisplayName() + ": " + message);
+		}
+
+		if (event.isCancelled()) {
+			event.setCancelled(true);
 		}
 
 		ComponentBuilder chatComponent = ChatManager.getChatComponent(player, message);
@@ -59,10 +61,17 @@ public class ChatListener implements Listener {
 			}
 		}
 
-		if (isInStaffChat)
+		if (isInStaffChat) {
 			chatStaff(recipients, staffComponent);
-		else
+
+			CommandSender console = Bukkit.getConsoleSender();
+			console.spigot().sendMessage(staffComponent.create());
+		} else {
 			chatGlobal(recipients, chatComponent, playerNamesToPing, player.getName());
+
+			CommandSender console = Bukkit.getConsoleSender();
+			console.spigot().sendMessage(chatComponent.create());
+		}
 	}
 
 	private static void chatGlobal(Set<Player> recipients, ComponentBuilder component, Set<String> playersToPing, String sender) {

@@ -1,10 +1,8 @@
 package net.dirtcraft.plugins.dirtchat.commands;
 
 import net.dirtcraft.plugins.dirtchat.data.ChatManager;
-import net.dirtcraft.plugins.dirtchat.listeners.ChatListener;
 import net.dirtcraft.plugins.dirtchat.utils.Permissions;
 import net.dirtcraft.plugins.dirtchat.utils.Strings;
-import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

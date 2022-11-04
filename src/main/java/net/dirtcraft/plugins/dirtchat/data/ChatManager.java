@@ -1,6 +1,7 @@
 package net.dirtcraft.plugins.dirtchat.data;
 
-import net.dirtcraft.plugins.dirtchat.utils.ItemStackToJson;
+import de.tr7zw.changeme.nbtapi.NBTCompound;
+import de.tr7zw.changeme.nbtapi.NBTItem;
 import net.dirtcraft.plugins.dirtchat.utils.Permissions;
 import net.dirtcraft.plugins.dirtchat.utils.Utilities;
 import net.dirtcraft.plugins.dirtchat.utils.Vault;
@@ -73,7 +74,8 @@ public class ChatManager {
 		}
 
 		ItemStack itemStack = player.getInventory().getItemInMainHand();
-		String item = ItemStackToJson.convertItemStackToJson(itemStack);
+		NBTCompound itemData = NBTItem.convertItemtoNBT(itemStack);
+		String item = itemData.toString();
 		List<String> messageParts = Arrays.asList(message.split("((?<= )|(?= ))"));
 
 		BaseComponent[] itemPartComponent = new ComponentBuilder("")
@@ -121,7 +123,7 @@ public class ChatManager {
 				))).create();
 
 		BaseComponent[] staffComponent = new ComponentBuilder("")
-				.append(ChatColor.GRAY + "" + ChatColor.MAGIC + "||" + ChatColor.RESET + " " + ChatColor.DARK_PURPLE + "Staff" + " " + ChatColor.MAGIC + "||" + ChatColor.RESET)
+				.append(ChatColor.GRAY + "   " + ChatColor.BOLD + "\u25c6 " + ChatColor.GOLD + "" + ChatColor.BOLD + "Staff" + ChatColor.GRAY + "" + ChatColor.BOLD + " \u25c6" + ChatColor.RESET)
 				.event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatColor.AQUA + "This message is only being displayed in the staff chat.")))
 				.create();
 
@@ -146,12 +148,13 @@ public class ChatManager {
 		}
 
 		ItemStack itemStack = player.getInventory().getItemInMainHand();
-		String item = ItemStackToJson.convertItemStackToJson(itemStack);
+		NBTCompound itemData = NBTItem.convertItemtoNBT(itemStack);
+		String item = itemData.toString();
 		List<String> messageParts = Arrays.asList(message.split("((?<= )|(?= ))"));
 
 		BaseComponent[] itemPartComponent = new ComponentBuilder("")
 				.append(ChatColor.AQUA + "[" + ChatColor.GRAY + Utilities.getFriendlyName(itemStack) + ChatColor.AQUA + "]")
-				.event(new HoverEvent(HoverEvent.Action.SHOW_ITEM, new BaseComponent[]{new TextComponent(item)}))
+				.event(new HoverEvent(HoverEvent.Action.SHOW_ITEM, new BaseComponent[]{ new TextComponent(item) }))
 				.create();
 
 		if (messageParts.size() == 0) {
